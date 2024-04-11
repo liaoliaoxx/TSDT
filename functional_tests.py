@@ -21,25 +21,34 @@ class NewVisitorTest(unittest.TestCase):
 		header_text = self.browser.find_element(By.TAG_NAME,'h1').text
 		self.assertIn('To-Do',header_text)
 		
+		# inputbox = self.browser.find_element(By.ID,'id_new_item')
+		
+		# self.assertEqual(
+		# 	inputbox.get_attribute('placeholder'),
+		# 	'Enter a to-do item'
+		# )
+
+		# inputbox.send_keys('Buy flowers')
+
+		# inputbox.send_keys(Keys.ENTER)
+		# time.sleep(1)
+
+		# table = self.browser.find_element(By.ID,'id_list_table')
+		# rows = table.find_elements(By.TAG_NAME,'tr')
+		# self.assertIn('1: Buy flowers',[row.text for row in rows])
+		# self.fail('Finish the test!')
+
+
 		inputbox = self.browser.find_element(By.ID,'id_new_item')
-		self.assertEqual(
-			inputbox.get_attribute('placeholder'),
-			'Enter a to-do item'
-		)
-
-		inputbox.send_keys('Buy flowers')
-
+		inputbox.send_keys('Give a gift to Lisi')
 		inputbox.send_keys(Keys.ENTER)
 		time.sleep(1)
 
 		table = self.browser.find_element(By.ID,'id_list_table')
-		rows = table.find_element(By.TAG_NAME,'tr')
-		self.assertIn('1: Buy flowers',[row.text for row in rows])
-		
-		# 应用有一个输入待办事项的文本输入框
-		# 他在文本输入框中输入了“Buy flowers”
-		# 他访问那个URL，发现他的待办事项表还在
-		# 他满意的离开了
+		rows = table.find_elements(By.TAG_NAME,'tr')
+		self.assertIn('1: Buy flowers', [row.text for row in rows])
+		self.assertIn('2: Give a gift to Lisi', [row.text for row in rows])
+
 		self.fail('Finish the test!')
 
 if __name__ == '__main__':
