@@ -50,6 +50,7 @@ class NewVisitorTest(LiveServerTestCase):
 		self.wait_for_row_in_list_table('2: Give a gift to Lisi')
 
 	def test_multiple_users_can_start_at_different_urls(self):
+		# 张三新建一个待办事项清单
 		self.browser.get(self.live_server_url)
 		inputbox = self.browser.find_element(By.ID, 'id_new_item')
 		inputbox.send_keys('Buy flowers')
