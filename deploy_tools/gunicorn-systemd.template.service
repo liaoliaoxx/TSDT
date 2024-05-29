@@ -1,0 +1,11 @@
+[Unit]
+Description=Gunicorn server for SITENANE
+
+[Service]
+Restart=on-failure
+User=liao
+WorkingDirectory=/home/liao/sites/SITENANE/source
+ExecStart=/home/liao/sites/SITENANE/virtualenv/bin/gunicorn --bind unix:/tmp/SITENANE.socket notes.wsgi:application
+
+[Install]
+MantedBy=multi-user.target
